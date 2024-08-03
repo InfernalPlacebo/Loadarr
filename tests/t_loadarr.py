@@ -7,8 +7,8 @@ from loadarr import generate_autonomous
 
 
 def test_generate_autonomous(capfd):
-    media_server_choice = 'yp'
-    torrent_client_choice = 'yq'
+    media_server_choice = 'p'
+    torrent_client_choice = 'q'
     usenet_client_choice = 'n'
     downloader_choice = 'y,s,r'
     extra_services_choice = 'y,o,u'

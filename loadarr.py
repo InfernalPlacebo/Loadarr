@@ -124,46 +124,46 @@ def generate_interactive():
 # Generate automatically using variables passed
 def generate_autonomous(media_server_choice, torrent_client_choice, usenet_client_choice, downloader_choice, extra_services_choice):
     # Media server choice
-    if "y" in media_server_choice:
-        media_server_choice = "plex" if "p" in media_server_choice else "emby"
+    if media_server_choice.lower() == "p":
+        media_server_choice = "plex"
+    elif media_server_choice.lower() == "e":
+        media_server_choice = "emby"
     else:
         media_server_choice = ""
 
     # Torrent client choice
-    if "y" in torrent_client_choice:
-        torrent_client_choice = "qbittorrent" if "q" in torrent_client_choice else "rtorrent"
+    if torrent_client_choice.lower() == "q":
+        torrent_client_choice = "qbittorrent"
+    elif torrent_client_choice == "r":
+        torrent_client_choice = "rtorrent"
     else:
         torrent_client_choice = ""
 
     # Usenet client choice
-    if "y" in  usenet_client_choice:
+    if usenet_client_choice == "y":
         usenet_client_choice = "not available"
     else:
         usenet_client_choice = ""
 
     # Downloader choice
     downloader = ""
-    if "y" in downloader_choice:
-        for choice in downloader_choice.split(","):
-            if "s" in choice:
-                downloader += "sonarr,"
-            elif "r" in choice:
-                downloader += "radarr,"
-            elif "l" in choice:
-                downloader += "lidarr,"
-            elif "e" in choice:
-                downloader += "readerr,"
+    if "s" in downloader_choice:
+        downloader += "sonarr,"
+    if "r" in downloader_choice:
+        downloader += "radarr,"
+    if "l" in downloader_choice:
+        downloader += "lidarr,"
+    if "e" in downloader_choice:
+        downloader += "readerr,"
 
     # Extra services choice
     extra_services = ""
-    if "y" in extra_services_choice:
-        for choice in extra_services_choice.split(","):
-            if "o" in choice:
-                extra_services += "overseerr,"
-            elif "u" in choice:
-                extra_services += "unpackerr,"
-            elif "t" in choice:
-                extra_services += "tautulli,"
+    if "o" in extra_services_choice:
+        extra_services += "overseerr,"
+    if "u" in extra_services_choice:
+        extra_services += "unpackerr,"
+    if "t" in extra_services_choice:
+        extra_services += "tautulli,"
 
     choices = {
         "media_server": media_server_choice,
