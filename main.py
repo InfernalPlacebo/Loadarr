@@ -1,3 +1,24 @@
+"""
+Loadarr Docker Compose Generator
+
+This script generates Docker Compose configurations for media server environments.
+It can run in two modes:
+- Interactive Mode: Prompts the user for input to configure the media server environment.
+- Autonomous Mode: Takes command-line arguments to configure the media server environment without user interaction.
+
+Usage:
+    python main.py --mode interactive
+    python main.py --mode autonomous --media_server <media_server> --torrent_client <torrent_client> --usenet_client <usenet_client> --downloader <downloader> --extra_services <extra_services>
+
+Arguments:
+    --mode: Choose the mode to run the script (interactive or autonomous). Defaults to autonomous.
+    --media_server: Media server choice for autonomous mode.
+    --torrent_client: Torrent client choice for autonomous mode.
+    --usenet_client: Usenet client choice for autonomous mode.
+    --downloader: Downloader choice for autonomous mode.
+    --extra_services: Extra services choice for autonomous mode.
+"""
+
 import argparse
 from loadarr import generate_interactive, generate_autonomous
 
@@ -9,8 +30,8 @@ def main():
 
     # Add arguments to the parser
     parser.add_argument('--default', help="Use default settings", action="store")
-    parser.add_argument('--mode', choices=['interactive', 'autonomous'], default='autonomous', help="Choose the mode"
-                                                                                                    " to run the script")
+    parser.add_argument('--mode', choices=['interactive', 'autonomous'], default='autonomous',
+                        help="Choose the mode to run the script")
     parser.add_argument('--media_server', help="Media server choice for autonomous mode")
     parser.add_argument('--torrent_client', help="Torrent client choice for autonomous mode")
     parser.add_argument('--usenet_client', help="Usenet client choice for autonomous mode")
