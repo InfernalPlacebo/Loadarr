@@ -192,5 +192,8 @@ def create_docker_compose(choices):
 
     compose_dict = service_dict.load_services(compose_dict, choices)
 
-    for key, value in compose_dict.items():
-        print(key, value)
+    # Export the dictionary to a compose.yml file
+    with open('compose.yml', 'w') as file:
+        yaml.dump(compose_dict, file, default_flow_style=False)
+
+    print("Docker Compose file 'compose.yml' has been generated successfully.")
